@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 import startMainTabs from '../MainTabs/startMainTabs';
 
 
 class SplashScreen extends Component {
-  loginHandler = () => {
-    startMainTabs();
-  };
+  componentDidMount = () => {
+    setTimeout(function () {
+      startMainTabs();
+    }, 3000)
+  }
   render() {
     return (
-      <View>
-        <Text> AUTH </Text>
-        <Button title="Login" onPress={this.loginHandler} />
+      <View style={styles.container}>
+        <Text> SPLASH </Text>
       </View>
     );
   }
 }
+
+styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  }
+})
 
 export default SplashScreen;
