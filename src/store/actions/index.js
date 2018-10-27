@@ -1,1 +1,1 @@
-export {addExpense, deleteExpense} from "./expenses"
+export {addExpense, deleteExpense, getExpenses} from "./expenses"

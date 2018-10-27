@@ -12,7 +12,9 @@ const store = configureStore();
 // Register Screens
 Navigation.registerComponent(
   "test-app.SplashScreen",
-  () => SplashScreen
+  () => SplashScreen,
+  store,
+  Provider
 );
 Navigation.registerComponent(
   "test-app.InputScreen",

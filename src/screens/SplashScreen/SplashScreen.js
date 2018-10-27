@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+
 import startMainTabs from '../MainTabs/startMainTabs';
+import { getExpenses } from '../../store/actions/index'
+
+import { getSpreadSheetInfo } from "../../providers/spreadsheet";
 
 
 class SplashScreen extends Component {
   componentDidMount = () => {
-    setTimeout(function () {
-      startMainTabs();
-    }, 3000)
+    this.props.onGetExpenses();
+    startMainTabs();
   }
   render() {
     return (
@@ -26,4 +30,10 @@ styles = StyleSheet.create({
   }
 })
 
-export default SplashScreen;
+const mapDispatchToProps = dispatch => {
+  return {
+    onGetExpenses: () => dispatch(getExpenses())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SplashScreen);
