@@ -2,10 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const expense = (props) => (
-  <View style={styles.listItem} >
-    <Text style={styles.expenseName}>{props.expense.name}</Text>
-    <Text>{props.expense.amount}</Text>
-  </View>
+  <TouchableOpacity
+    onPress={props.onItemPressed}>
+    <View style={styles.listItem} >
+      <Text style={styles.expenseName}>{props.expense.name}</Text>
+      <Text>{props.expense.amount}</Text>
+    </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({

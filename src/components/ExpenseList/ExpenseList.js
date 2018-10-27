@@ -12,7 +12,8 @@ const expenseList = props => {
         renderItem= {(i) => (
           <Expense 
             key={i.item.id}
-            expense={i.item}/>
+            expense={i.item}
+            onItemPressed={() => props.onItemPressed(i.item.id)}/>
         )}
       />
     )

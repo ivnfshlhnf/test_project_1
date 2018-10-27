@@ -8,10 +8,15 @@ import ExpenseList from "../../components/ExpenseList/ExpenseList";
 
 
 class DataListScreen extends Component {
+  onDeleteExpenseHandler = id => {
+    this.props.onDeleteExpense(id);
+  }
   render() {
     return (
       <View>
-        <ExpenseList expenses={this.props.expenses}/>
+        <ExpenseList
+          expenses={this.props.expenses}
+          onItemPressed={this.onDeleteExpenseHandler} />
       </View>
     );
   }
@@ -23,4 +28,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null) (DataListScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeleteExpense: (id) => dispatch(deleteExpense(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DataListScreen);
