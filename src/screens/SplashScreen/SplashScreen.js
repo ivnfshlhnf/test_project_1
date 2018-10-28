@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import startMainTabs from '../MainTabs/startMainTabs';
 import { getExpenses } from '../../store/actions/index'
 
-import { getSpreadSheetInfo } from "../../providers/spreadsheet";
 
 
 class SplashScreen extends Component {
