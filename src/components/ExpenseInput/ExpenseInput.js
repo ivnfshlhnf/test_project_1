@@ -47,8 +47,6 @@ class ExpenseInput extends Component {
             title="Add"
             onPress={this.addToList} />
         </View>
-        <Text>{this.state.expense.name}</Text>
-        <Text>{this.state.expense.amount}</Text>
       </View>
     );
   }

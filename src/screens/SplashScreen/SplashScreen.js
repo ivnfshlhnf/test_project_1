@@ -3,14 +3,14 @@ import { View, Text, Button, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
 import startMainTabs from '../MainTabs/startMainTabs';
-import { getExpenses } from '../../store/actions/index'
+import { getToken } from '../../store/actions/index'
 
 
 
 class SplashScreen extends Component {
   componentDidMount = () => {
-    this.props.onGetExpenses();
-    startMainTabs();
+    this.props.onGetToken();
+    // startMainTabs();
   }
   render() {
     return (
@@ -31,7 +31,7 @@ styles = StyleSheet.create({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetExpenses: () => dispatch(getExpenses())
+    onGetToken: () => dispatch(getToken())
   }
 }
 
