@@ -1,28 +1,29 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const expense = (props) => (
-  <TouchableOpacity
-    onPress={props.onItemPressed}>
-    <View style={styles.listItem} >
-      <Text style={styles.expenseName}>{props.expense.name}</Text>
-      <Text>{props.expense.amount}</Text>
-    </View>
-  </TouchableOpacity>
-);
+class Expense extends Component {
+  render() {
+    return (
+      <View style={styles.listItem}>
+        <Text style={styles.expenseName}>{this.props.expense.name}</Text>
+        <Text>{this.props.expense.amount}</Text>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   listItem: {
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
     marginBottom: 5,
     padding: 10,
-    backgroundColor: "#eee"
+    backgroundColor: "#aaa"
   },
   expenseName: {
     marginRight: 10
   }
 });
 
-export default expense;
+export default Expense;

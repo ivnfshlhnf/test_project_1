@@ -4,25 +4,27 @@ import { FlatList, StyleSheet } from "react-native";
 import Expense from "./Expense";
 
 const expenseList = props => {
-    return (
-      <FlatList 
+  return (
+      <FlatList
         style={styles.listContainer}
         data={props.expenses}
         keyExtractor={item => item.id}
-        renderItem= {(i) => (
-          <Expense 
+        renderItem={i => (
+          <Expense
             key={i.item.id}
             expense={i.item}
-            onItemPressed={() => props.onItemPressed(i.item.id)}/>
+            onItemPressed={() => props.onItemPressed(i.item.id)}
+          />
         )}
       />
-    )
+  );
 };
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   listContainer: {
-    width: "100%"
+    width: "100%",
+    paddingHorizontal: 10
   }
-})
+});
 
 export default expenseList;

@@ -2,41 +2,38 @@ import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
-import startMainTabs from "../MainTabs/startMainTabs";
-import { getToken } from '../../store/actions/index'
-
-
+import { getToken } from "../../store/actions/index";
 
 class SplashScreen extends Component {
-  componentDidMount = () => {
-  }
+  componentDidMount = () => {};
   onLoginHandler = () => {
     this.props.onGetToken();
-  }
+  };
   render() {
     return (
       <View style={styles.container}>
         <Text> SPLASH </Text>
-        <Button
-          title="login"
-          onPress={this.onLoginHandler}/>
+        <Button title="login" onPress={this.onLoginHandler} color="red" />
       </View>
     );
   }
 }
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center"
   }
-})
+});
 
 const mapDispatchToProps = dispatch => {
   return {
     onGetToken: () => dispatch(getToken())
-  }
-}
+  };
+};
 
-export default connect(null, mapDispatchToProps)(SplashScreen);
+export default connect(
+  null,
+  mapDispatchToProps
+)(SplashScreen);
