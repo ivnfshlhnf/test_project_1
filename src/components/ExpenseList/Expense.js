@@ -14,6 +14,7 @@ const expense = (props) => (
 const styles = StyleSheet.create({
   listItem: {
     flexDirection: 'row',
+    justifyContent: "space-between",
     width: "100%",
     marginBottom: 5,
     padding: 10,

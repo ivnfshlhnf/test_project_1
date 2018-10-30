@@ -1,8 +1,10 @@
 import { GoogleSignin } from "react-native-google-signin";
+import startMainTabs from '../../screens/MainTabs/startMainTabs';
 
 import { SET_USER } from "./actionTypes";
 
 export const getToken = () => {
+  console.log("getting token")
   return dispatch => {
     GoogleSignin.configure({
       // https://developers.google.com/identity/protocols/googlescopes
@@ -12,8 +14,9 @@ export const getToken = () => {
     });
     GoogleSignin.signIn()
       .then(user => {
-        console.log("User : ", user);
+        // console.log("User : ", user);
         dispatch(setUser(user));
+        startMainTabs()
       })
       .catch(err => {
         console.log(err);

@@ -2,20 +2,24 @@ import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
-import startMainTabs from '../MainTabs/startMainTabs';
+import startMainTabs from "../MainTabs/startMainTabs";
 import { getToken } from '../../store/actions/index'
 
 
 
 class SplashScreen extends Component {
   componentDidMount = () => {
+  }
+  onLoginHandler = () => {
     this.props.onGetToken();
-    // startMainTabs();
   }
   render() {
     return (
       <View style={styles.container}>
         <Text> SPLASH </Text>
+        <Button
+          title="login"
+          onPress={this.onLoginHandler}/>
       </View>
     );
   }

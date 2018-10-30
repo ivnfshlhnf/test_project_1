@@ -11,7 +11,7 @@ const expenseReducer = (state = initialState, action) => {
       return {
         ...state,
         expenses: state.expenses.concat({
-          id: Math.random().toString(),
+          id: action.expense.id,
           name: action.expense.name,
           amount: action.expense.amount
         })

@@ -3,9 +3,12 @@ import { View } from "react-native";
 import { connect } from "react-redux";
 
 import ExpenseInput from '../../components/ExpenseInput/ExpenseInput';
-import { addExpense } from '../../store/actions/index'
+import { postExpense } from '../../store/actions/index'
 
 class InputScreen extends Component {
+  componentDidMount() {
+    console.log("InputScreen screen mounted")
+  }
   onExpenseAdded = expense => {
     this.props.onAddExpense(expense);
   }
@@ -25,7 +28,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    onAddExpense: (expense) => dispatch(addExpense(expense))
+    onAddExpense: (expense) => dispatch(postExpense(expense))
   }
 }
 
