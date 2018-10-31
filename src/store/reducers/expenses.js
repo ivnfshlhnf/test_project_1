@@ -13,7 +13,8 @@ const expenseReducer = (state = initialState, action) => {
         expenses: state.expenses.concat({
           id: action.expense.id,
           name: action.expense.name,
-          amount: action.expense.amount
+          amount: action.expense.amount,
+          date: expense.date
         })
       };
     case DELETE_EXPENSE:

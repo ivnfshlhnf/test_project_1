@@ -23,21 +23,22 @@ export const getExpenses = () => {
     let url =
       baseUrlSpreadSheet +
       sheetId +
-      "/values/Sheet1!A2:C25" +
+      "/values/Sheet1!A2:D25" +
       "?access_token=" +
       state.auth.user.accessToken;
     console.log("get", url);
     fetch(url)
-      .catch(err => console.log(err))
+      .catch(err => console.log("getExpenses err", err))
       .then(res => res.json())
       .then(parsedRes => {
-        console.log(parsedRes);
+        console.log("getExpenses res: ", parsedRes);
         const expenses = [];
         for (let expense of parsedRes.values) {
           expenses.push({
             id: expense[0],
             name: expense[1],
-            amount: expense[2]
+            amount: expense[2],
+            date: expense[3]
           });
         }
         dispatch(setExpenses(expenses));
@@ -59,16 +60,18 @@ export const postExpense = expense => {
     const newExpense = {
       id: Math.random().toString(),
       name: expense.name,
-      amount: expense.amount
+      amount: expense.amount,
+      date: expense.date
     };
     console.log("new expense to send: ", newExpense);
+    const expenseLength = state.expenses.expenses ? state.expenses.expenses.length : 0
     const range =
       "Sheet1!A" +
-      (state.expenses.expenses.length + 2) +
-      ":C" +
-      (state.expenses.expenses.length + 2);
+      (expenseLength + 2) +
+      ":D" +
+      (expenseLength + 2);
     const body = JSON.stringify({
-      values: [[newExpense.id, newExpense.name, newExpense.amount]]
+      values: [[newExpense.id, newExpense.name, newExpense.amount, newExpense.date]]
     });
     let url =
       baseUrlSpreadSheet +
