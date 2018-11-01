@@ -8,51 +8,24 @@ import ExpenseList from "../../components/ExpenseList/ExpenseList";
 
 class DataListScreen extends Component {
   state = {
-    sheetId: "1wk_aiHQnXG78iw2pVSY-8puoH0h3F3_kcgTFB7vhIoU",
-    groupedExpenses: null
+    sheetId: "1wk_aiHQnXG78iw2pVSY-8puoH0h3F3_kcgTFB7vhIoU"
   };
   componentDidMount() {
     console.log("datalist screen mounted");
     this.props.onGetExpenses(this.state.sheetId);
   }
-
-  onDeleteExpenseHandler = id => {
-    this.props.onDeleteExpense(id);
-  };
   componentDidUpdate(prevProps, prevState) {
-    console.log("componentDidUpdate", prevProps);
     if (this.props.expenses !== prevProps.expenses) {
-      this.setState({
-        groupedExpenses: this.groupBy(this.props.expenses, "date")
-      });
+      console.log("expenses:", this.props.expenses)
     }
-    if (this.state !== prevState) {
-      console.log("groupedExpenses", this.state.groupedExpenses);
-      let tmparr = this.state.groupedExpenses
-      for (obj in tmparr){
-        let value = tmparr[obj]
-        console.log("")
-      }
-    }
-    console.log("new props", this.props);
   }
+  
 
-  groupBy = function(xs, key) {
-    return xs.reduce(function(rv, x) {
-      (rv[x[key]] = rv[x[key]] || []).push(x);
-      return rv;
-    }, []);
-  };
   render() {
     return (
       <View>
         <ExpenseList
-          expenses={this.state.groupedExpenses}
-          onItemPressed={this.onDeleteExpenseHandler}
-        />
-        <Button
-          title="group"
-          onPress={() => this.groupBy(this.props.expenses, "date")}
+          expenses={this.props.expenses}
         />
       </View>
     );

@@ -7,7 +7,7 @@ class ExpenseInput extends Component {
     expense: {
       name: "",
       amount: "",
-      date: ""
+      date: new Date()
     }
   };
   expenseNameChangedHandler = val => {
@@ -27,13 +27,10 @@ class ExpenseInput extends Component {
   };
   addToList = val => {
     this.props.onExpenseAdded(this.state.expense);
-    this.setState({
-      expense: {
-        name: "",
-        amount: "",
-        date: ""
-      }
-    });
+    var expense = this.state.expense;
+    expense.amount = "";
+    expense.name = "";
+    this.setState({ expense: expense });
   };
   render() {
     return (

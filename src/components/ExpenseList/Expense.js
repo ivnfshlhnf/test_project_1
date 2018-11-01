@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 class Expense extends Component {
+  
   render() {
     return (
       <View style={styles.listItem}>

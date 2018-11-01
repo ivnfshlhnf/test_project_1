@@ -38,9 +38,12 @@ export const getExpenses = () => {
             id: expense[0],
             name: expense[1],
             amount: expense[2],
-            date: expense[3]
+            date: new Date(expense[3])
           });
         }
+        expenses.sort((a, b) => {
+          return a.date - b.date;
+        });
         dispatch(setExpenses(expenses));
       });
   };
